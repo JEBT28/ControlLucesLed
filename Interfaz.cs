@@ -47,6 +47,18 @@ namespace Proyecto_Arduino
 
             puertoComunicacion.DataReceived += new SerialDataReceivedEventHandler(puertoComunicacion_DataReceived);
 
+            // Controlamos que el puerto indicado esté operativo
+            try
+            {
+                // Abrimos el puerto serie
+                puertoComunicacion.Open();
+                Debug.WriteLine($"Puerto abierto: {puerto}");
+            }
+            catch
+            {
+                MessageBox.Show("El puerto indicado no se puede abrir");
+            }
+
         }
 
         private void puertoComunicacion_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -56,6 +68,17 @@ namespace Proyecto_Arduino
 
             // Leemos el dato recibido del puerto serie
             Debug.WriteLine($"Dato recibido: {currentSerialPort.ReadLine()}");
+        }
+
+        private void btnConectar_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(cmbPuertosSeriales.SelectedText))
+            {
+                MessageBox.Show("No hay ningun puerto seleccionaado");
+                return;
+            }
+
+            Conectar(cmbPuertosSeriales.SelectedText);
         }
     }
 }

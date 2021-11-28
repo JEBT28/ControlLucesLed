@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Interfaz));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnCargarSP = new System.Windows.Forms.ToolStripButton();
             this.cmbPuertosSeriales = new System.Windows.Forms.ToolStripComboBox();
             this.btnConectar = new System.Windows.Forms.ToolStripButton();
-            this.btnCargarSP = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,16 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnCargarSP
+            // 
+            this.btnCargarSP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCargarSP.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarSP.Image")));
+            this.btnCargarSP.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCargarSP.Name = "btnCargarSP";
+            this.btnCargarSP.Size = new System.Drawing.Size(89, 22);
+            this.btnCargarSP.Text = "Cargar Puertos";
+            this.btnCargarSP.Click += new System.EventHandler(this.btnCargarSP_Click);
+            // 
             // cmbPuertosSeriales
             // 
             this.cmbPuertosSeriales.Name = "cmbPuertosSeriales";
@@ -61,16 +71,7 @@
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(59, 22);
             this.btnConectar.Text = "Conectar";
-            // 
-            // btnCargarSP
-            // 
-            this.btnCargarSP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnCargarSP.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarSP.Image")));
-            this.btnCargarSP.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCargarSP.Name = "btnCargarSP";
-            this.btnCargarSP.Size = new System.Drawing.Size(89, 22);
-            this.btnCargarSP.Text = "Cargar Puertos";
-            this.btnCargarSP.Click += new System.EventHandler(this.btnCargarSP_Click);
+            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
             // Interfaz
             // 
