@@ -67,7 +67,7 @@ namespace Proyecto_Arduino
             SerialPort currentSerialPort = (SerialPort)sender;
 
             // Leemos el dato recibido del puerto serie
-            Debug.WriteLine($"Dato recibido: {currentSerialPort.ReadLine()}");
+            Debug.WriteLine($"Dato recibido: {currentSerialPort.ReadExisting()}");
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
