@@ -33,7 +33,9 @@
             this.btnCargarSP = new System.Windows.Forms.ToolStripButton();
             this.cmbPuertosSeriales = new System.Windows.Forms.ToolStripComboBox();
             this.btnConectar = new System.Windows.Forms.ToolStripButton();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -73,17 +75,28 @@
             this.btnConectar.Text = "Conectar";
             this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
+            // pbImagen
+            // 
+            this.pbImagen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbImagen.Location = new System.Drawing.Point(0, 25);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(800, 425);
+            this.pbImagen.TabIndex = 1;
+            this.pbImagen.TabStop = false;
+            // 
             // Interfaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pbImagen);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Interfaz";
             this.Text = "Interfaz";
             this.Load += new System.EventHandler(this.Interfaz_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,5 +108,6 @@
         private System.Windows.Forms.ToolStripComboBox cmbPuertosSeriales;
         private System.Windows.Forms.ToolStripButton btnConectar;
         private System.Windows.Forms.ToolStripButton btnCargarSP;
+        private System.Windows.Forms.PictureBox pbImagen;
     }
 }

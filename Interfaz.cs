@@ -16,6 +16,7 @@ namespace Proyecto_Arduino
     {
         private SerialPort puertoComunicacion;
 
+        private int estado = 0;
         public Interfaz()
         {
             InitializeComponent();
@@ -66,8 +67,25 @@ namespace Proyecto_Arduino
             // Obtenemos el puerto serie que lanza el evento
             SerialPort currentSerialPort = (SerialPort)sender;
 
+            int datoRecibido = int.Parse(currentSerialPort.ReadExisting());
+
+            if (estado == datoRecibido)
+            {
+                return;
+            }
+
+            estado = datoRecibido;
             // Leemos el dato recibido del puerto serie
-            Debug.WriteLine($"Dato recibido: {currentSerialPort.ReadExisting()}");
+            Debug.WriteLine($"Es de {(datoRecibido==1?"dia":"noche")}");
+            if (datoRecibido == 1)
+            {
+                pbImagen.Image = Properties.Resources.dia;
+            }
+            else
+            {
+                pbImagen.Image = Properties.Resources.noche;
+            }
+
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
