@@ -67,7 +67,7 @@ namespace Proyecto_Arduino
             // Obtenemos el puerto serie que lanza el evento
             SerialPort currentSerialPort = (SerialPort)sender;
 
-            int datoRecibido = int.Parse(currentSerialPort.ReadExisting());
+            int datoRecibido = int.Parse(currentSerialPort.ReadExisting().Trim());
 
             if (estado == datoRecibido)
             {
