@@ -16,7 +16,7 @@ namespace Proyecto_Arduino
     {
         private SerialPort puertoComunicacion;
 
-        private string estado = "0";
+        private string estado = "";
         public Interfaz()
         {
             InitializeComponent();
@@ -67,9 +67,9 @@ namespace Proyecto_Arduino
             // Obtenemos el puerto serie que lanza el evento
             SerialPort currentSerialPort = (SerialPort)sender;
 
-            string datoRecibido = currentSerialPort.ReadExisting();
+            string datoRecibido = currentSerialPort.ReadExisting().Trim();
 
-            if (estado == datoRecibido)
+            if (estado.Equals(datoRecibido))
             {
                 return;
             }
@@ -77,7 +77,7 @@ namespace Proyecto_Arduino
             estado = datoRecibido;
             // Leemos el dato recibido del puerto serie
             Debug.WriteLine($"Es de {(datoRecibido=="1"?"dia":"noche")}");
-            if (datoRecibido == "1")
+            if (datoRecibido.Equals("1"))
             {
                 pbImagen.Image = Properties.Resources.dia;
             }

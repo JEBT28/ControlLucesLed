@@ -81,6 +81,7 @@
             this.pbImagen.Location = new System.Drawing.Point(0, 25);
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(800, 425);
+            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImagen.TabIndex = 1;
             this.pbImagen.TabStop = false;
             // 
