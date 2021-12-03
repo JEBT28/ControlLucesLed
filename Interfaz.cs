@@ -103,7 +103,10 @@ namespace Proyecto_Arduino
                 if (!chkDiasValidos.SelectedItems.Contains(cmbDiaActual.SelectedItem))
                 {
                     MessageBox.Show("Hoy no es dia de riego");
+                    puertoComunicacion.Write("0");
                     return;
+
+
                 }
                 Contador = 0;
                 t.Start();
