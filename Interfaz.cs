@@ -31,15 +31,7 @@ namespace Proyecto_Arduino
         }
 
         private void T_Tick(object? sender, EventArgs e)
-        {
-            if (Contador == 30)
-            {
-                Contador = 0;
-                t.Stop();
-                puertoComunicacion.Write("0");
-                return;
-            }
-
+        {         
             Contador++;
             lblContador.Text = Contador.ToString();
             
@@ -96,21 +88,15 @@ namespace Proyecto_Arduino
             // Leemos el dato recibido del puerto serie
             Debug.WriteLine($"Es de {(datoRecibido=="1"?"dia":"noche")}");
             if (datoRecibido.Contains("1"))
-            {}
-            else
             {
-
-                if (!chkDiasValidos.SelectedItems.Contains(cmbDiaActual.SelectedItem))
-                {
-                    MessageBox.Show("Hoy no es dia de riego");
-                    puertoComunicacion.Write("0");
-                    return;
-
-
-                }
+                t.Stop();
                 Contador = 0;
-                t.Start();
-                puertoComunicacion.Write("1");
+                lblContador.Text = Contador.ToString(); ;
+            }
+            else
+            {               
+                Contador = 0;
+                t.Start();             
             }
         }
 
