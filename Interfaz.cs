@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,26 +19,28 @@ namespace Proyecto_Arduino
 
         private string estado = "";
 
-        Timer t = new Timer();
+         System.Windows.Forms.Timer t;
 
         int Contador = 0;
 
-        
-        public Interfaz()
+
+        public delegate void actualizarLabel(string s,Label l);
+
+        public static void actualizar(string str,Label lbl)
         {
-            InitializeComponent();
-           
+            lbl.Text = str;
         }
 
-        private void T_Tick(object sender, EventArgs e)
-        {         
-            Contador++;
-            Debug.WriteLine(Contador);
-            lblContador.Text = Contador.ToString();            
+        public Interfaz()
+        {
+            InitializeComponent();           
         }
+
+        
 
         private void Interfaz_Load(object sender, EventArgs e)
         {
+            CheckForIllegalCrossThreadCalls = false;
             chkDiasValidos.DataSource = Enum.GetValues(typeof(DayOfWeek));
             cmbDiaActual.DataSource = Enum.GetValues(typeof(DayOfWeek));
         }
@@ -94,11 +97,39 @@ namespace Proyecto_Arduino
             }
             else
             {               
-                Contador = 0;                
-                t.Tick += new EventHandler(T_Tick);
-                t.Interval = 1000;
-                t.Start();
+                Contador = 0;
+                iniciarConteo();
             }
+        }
+
+        public void iniciarConteo()
+        {
+            t = new System.Windows.Forms.Timer();
+            
+            t.Tick += new EventHandler(tick);
+
+            t.Interval = 1000;
+            
+            t.Start();            
+        }
+
+
+        public void detenerConteo()
+        {
+            t.Stop();
+
+            Contador = 0;
+
+            lblContador.Text = Contador.ToString();
+        
+        }
+
+        private void tick(object sender,EventArgs e)
+        {
+            Contador++;
+            actualizarLabel act  = new actualizarLabel(actualizar);
+            act(Contador.ToString(), lblContador);
+            
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
