@@ -17,14 +17,38 @@ namespace Proyecto_Arduino
         private SerialPort puertoComunicacion;
 
         private string estado = "";
+
+        Timer t = new Timer();
+
+        int Contador = 0;
+
+        
         public Interfaz()
         {
             InitializeComponent();
+            t.Interval = 1000;
+            t.Tick += T_Tick;
+        }
+
+        private void T_Tick(object? sender, EventArgs e)
+        {
+            if (Contador == 30)
+            {
+                Contador = 0;
+                t.Stop();
+                puertoComunicacion.Write("0");
+                return;
+            }
+
+            Contador++;
+            lblContador.Text = Contador.ToString();
+            
         }
 
         private void Interfaz_Load(object sender, EventArgs e)
         {
-          
+            chkDiasValidos.DataSource = Enum.GetValues(typeof(DayOfWeek));
+            cmbDiaActual.DataSource = Enum.GetValues(typeof(DayOfWeek));
         }
 
         private void LeerPuertosSeriales()
@@ -69,23 +93,22 @@ namespace Proyecto_Arduino
 
             string datoRecibido = currentSerialPort.ReadExisting().Trim().Replace("\n","");
 
-            if (estado.Contains(datoRecibido))
-            {
-                return;
-            }
-
-            estado = datoRecibido;
             // Leemos el dato recibido del puerto serie
             Debug.WriteLine($"Es de {(datoRecibido=="1"?"dia":"noche")}");
             if (datoRecibido.Contains("1"))
-            {
-                pbImagen.Image = Properties.Resources.dia;
-            }
+            {}
             else
             {
-                pbImagen.Image = Properties.Resources.noche;
-            }
 
+                if (!chkDiasValidos.SelectedItems.Contains(cmbDiaActual.SelectedItem))
+                {
+                    MessageBox.Show("Hoy no es dia de riego");
+                    return;
+                }
+                Contador = 0;
+                t.Start();
+                puertoComunicacion.Write("1");
+            }
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
@@ -95,8 +118,8 @@ namespace Proyecto_Arduino
                 MessageBox.Show("No hay ningun puerto seleccionaado");
                 return;
             }
-
             Conectar(cmbPuertosSeriales.SelectedText);
         }
+
     }
 }
