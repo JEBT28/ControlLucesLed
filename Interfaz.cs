@@ -32,6 +32,7 @@ namespace Proyecto_Arduino
         private void T_Tick(object sender, EventArgs e)
         {         
             Contador++;
+            Debug.WriteLine(Contador);
             lblContador.Text = Contador.ToString();            
         }
 
