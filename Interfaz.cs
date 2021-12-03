@@ -84,8 +84,8 @@ namespace Proyecto_Arduino
             string datoRecibido = currentSerialPort.ReadExisting().Trim().Replace("\n","");
 
             // Leemos el dato recibido del puerto serie
-            Debug.WriteLine($"Es de {(datoRecibido=="1"?"dia":"noche")}");
-            if (datoRecibido.Contains("1"))
+            Debug.WriteLine(datoRecibido);
+            if (datoRecibido.ToString().Contains("1"))
             {
                 t.Stop();
                 Contador = 0;
