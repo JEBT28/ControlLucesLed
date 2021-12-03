@@ -26,15 +26,13 @@ namespace Proyecto_Arduino
         public Interfaz()
         {
             InitializeComponent();
-            t.Interval = 1000;
-            t.Tick += T_Tick;
+           
         }
 
-        private void T_Tick(object? sender, EventArgs e)
+        private void T_Tick(object sender, EventArgs e)
         {         
             Contador++;
-            lblContador.Text = Contador.ToString();
-            
+            lblContador.Text = Contador.ToString();            
         }
 
         private void Interfaz_Load(object sender, EventArgs e)
@@ -95,8 +93,10 @@ namespace Proyecto_Arduino
             }
             else
             {               
-                Contador = 0;
-                t.Start();             
+                Contador = 0;                
+                t.Tick += new EventHandler(T_Tick);
+                t.Interval = 1000;
+                t.Start();
             }
         }
 
