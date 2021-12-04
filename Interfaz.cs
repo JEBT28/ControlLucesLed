@@ -91,11 +91,46 @@ namespace Proyecto_Arduino
             Debug.WriteLine(datoRecibido);
             if (datoRecibido.ToString().Contains("0"))
             {
-                act(pbAspersor);
+                Thread actPb = new Thread(delegate () {
+
+                    
+
+                    // Cambiar el estado de los botones dentro del hilo TypingThread
+                    // Esto no generará excepciones de nuevo !
+                    if (pbAspersor.InvokeRequired)
+                    {
+                        pbAspersor.Invoke(new MethodInvoker(delegate
+                        {
+                            pbAspersor.Visible = !pbAspersor.Visible;
+                         
+                        }));
+                    }
+                });
+
+                actPb.Start();
+
+
             }
             else
             {
-                act(pbAspersor);
+                Thread actPb = new Thread(delegate () {
+
+
+
+                    // Cambiar el estado de los botones dentro del hilo TypingThread
+                    // Esto no generará excepciones de nuevo !
+                    if (pbAspersor.InvokeRequired)
+                    {
+                        pbAspersor.Invoke(new MethodInvoker(delegate
+                        {
+                            pbAspersor.Visible = !pbAspersor.Visible;
+
+                        }));
+                    }
+                });
+
+                actPb.Start();
+
             }
         }
 
