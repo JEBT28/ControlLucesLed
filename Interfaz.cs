@@ -93,10 +93,6 @@ namespace Proyecto_Arduino
             {
                 Thread actPb = new Thread(delegate () {
 
-                    
-
-                    // Cambiar el estado de los botones dentro del hilo TypingThread
-                    // Esto no generará excepciones de nuevo !
                     if (pbAspersor.InvokeRequired)
                     {
                         pbAspersor.Invoke(new MethodInvoker(delegate
@@ -115,10 +111,7 @@ namespace Proyecto_Arduino
             {
                 Thread actPb = new Thread(delegate () {
 
-
-
-                    // Cambiar el estado de los botones dentro del hilo TypingThread
-                    // Esto no generará excepciones de nuevo !
+                   
                     if (pbAspersor.InvokeRequired)
                     {
                         pbAspersor.Invoke(new MethodInvoker(delegate
@@ -133,9 +126,6 @@ namespace Proyecto_Arduino
 
             }
         }
-
-   
-
         
 
         private void btnConectar_Click(object sender, EventArgs e)
