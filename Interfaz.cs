@@ -24,12 +24,14 @@ namespace Proyecto_Arduino
         int Contador = 0;
 
 
-        public delegate void actualizarLabel(string s,Label l);
+        public delegate void actualizarLabel(PictureBox pb);
 
-        public static void actualizar(string str,Label lbl)
+        public static void actualizar(PictureBox box)
         {
-            lbl.Text = str;
+            box.Visible = !box.Visible;
         }
+
+        actualizarLabel act = new actualizarLabel(actualizar);
 
         public Interfaz()
         {
@@ -87,13 +89,13 @@ namespace Proyecto_Arduino
 
             // Leemos el dato recibido del puerto serie
             Debug.WriteLine(datoRecibido);
-            if (datoRecibido.ToString().Contains("1"))
+            if (datoRecibido.ToString().Contains("0"))
             {
-                pbAspersor.Visible = true;
+                act(pbAspersor);
             }
             else
             {
-                pbAspersor.Visible = false;
+                act(pbAspersor);
             }
         }
 
