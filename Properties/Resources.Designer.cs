@@ -63,6 +63,16 @@ namespace Proyecto_Arduino.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _862817 {
+            get {
+                object obj = ResourceManager.GetObject("862817", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dia {
             get {
                 object obj = ResourceManager.GetObject("dia", resourceCulture);
@@ -73,9 +83,30 @@ namespace Proyecto_Arduino.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap kisspng_irrigation_sprinkler_fire_sprinkler_system_clip_ar_lawn_clipart_tall_grass_free_clipart_on_dumielau_5baecb4414a218_4610799315381819560845 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-irrigation-sprinkler-fire-sprinkler-system-clip-ar-lawn-clipart-tall-gras" +
+                        "s-free-clipart-on-dumielau-5baecb4414a218.4610799315381819560845", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noche {
             get {
                 object obj = ResourceManager.GetObject("noche", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pasto {
+            get {
+                object obj = ResourceManager.GetObject("pasto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

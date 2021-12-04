@@ -40,9 +40,7 @@ namespace Proyecto_Arduino
 
         private void Interfaz_Load(object sender, EventArgs e)
         {
-            CheckForIllegalCrossThreadCalls = false;
-            chkDiasValidos.DataSource = Enum.GetValues(typeof(DayOfWeek));
-            cmbDiaActual.DataSource = Enum.GetValues(typeof(DayOfWeek));
+
         }
 
         private void LeerPuertosSeriales()
@@ -91,46 +89,17 @@ namespace Proyecto_Arduino
             Debug.WriteLine(datoRecibido);
             if (datoRecibido.ToString().Contains("1"))
             {
-                t.Stop();
-                Contador = 0;
-                lblContador.Text = Contador.ToString(); ;
+                pbAspersor.Visible = true;
             }
             else
-            {               
-                Contador = 0;
-                iniciarConteo();
+            {
+                pbAspersor.Visible = false;
             }
         }
 
-        public void iniciarConteo()
-        {
-            t = new System.Windows.Forms.Timer();
-            
-            t.Tick += new EventHandler(tick);
+   
 
-            t.Interval = 1000;
-            
-            t.Start();            
-        }
-
-
-        public void detenerConteo()
-        {
-            t.Stop();
-
-            Contador = 0;
-
-            lblContador.Text = Contador.ToString();
         
-        }
-
-        private void tick(object sender,EventArgs e)
-        {
-            Contador++;
-            actualizarLabel act  = new actualizarLabel(actualizar);
-            act(Contador.ToString(), lblContador);
-            
-        }
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
